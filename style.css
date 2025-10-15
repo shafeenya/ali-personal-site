@@ -1,43 +1,132 @@
-/* ---------- استایل کلی صفحه ---------- */
-body {
-  background-color: #202020;   /* رنگ پس‌زمینه */
-  color: white;                /* رنگ نوشته‌ها */
-  font-family: sans-serif;     /* نوع فونت عمومی */
-  text-align: center;          /* وسط‌چین کردن نوشته‌ها */
-  padding-top: 100px;          /* فاصله از بالا */
+/* ===== Tokens ===== */
+:root{
+  --bg: #0e1016;
+  --bg-2:#0b0d12;
+  --glass:#121624cc;
+  --text:#e8ebf5;
+  --muted:#aab1c7;
+  --accent:#7c4dff;
+  --accent-2:#4da3ff;
+  --border:#2a3347;
+  --radius:16px;
+  --shadow: 0 12px 32px rgba(3,8,20,.35);
+  --blur: 12px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:"Vazirmatn",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(1200px 800px at 80% -10%, #4da3ff22 0%, transparent 60%),
+    radial-gradient(1000px 700px at -10% 20%, #7c4dff22 0%, transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  color:var(--text);
 }
 
-/* ---------- تیتر اصلی ---------- */
-h1 {
-  color: #4da3ff;              /* رنگ تیتر بزرگ */
+/* ===== Nav (glass) ===== */
+.nav{
+  position:sticky; top:0; z-index:10;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding:14px 20px; margin:8px 12px;
+  background: linear-gradient(180deg, #121624ee, #0f1320bb);
+  border:1px solid var(--border);
+  border-radius:14px; backdrop-filter: blur(var(--blur));
+  box-shadow: var(--shadow);
+}
+.brand{font-weight:800; letter-spacing:-0.4px}
+.brand span{color:var(--accent)}
+.menu{display:flex; gap:14px; list-style:none; margin:0; padding:0}
+.menu a{color:var(--text); opacity:.85}
+.menu a:hover{opacity:1}
+.icon-btn{
+  background:transparent; border:1px solid var(--border);
+  border-radius:10px; padding:8px 10px; color:var(--text); cursor:pointer;
 }
 
-/* ---------- محدوده‌ی اصلی سایت ---------- */
-header, main, footer {
-  width: 80%;
-  margin: auto;
-  max-width: 700px;
+/* ===== Containers ===== */
+.container{max-width:1080px; margin:auto; padding:0 20px}
+
+/* ===== Hero ===== */
+.hero{
+  position:relative; display:grid; grid-template-columns:1.1fr .9fr;
+  align-items:center; gap:28px; padding:60px 0 20px;
+}
+.hero__content h1{
+  font-weight:800; font-size:clamp(28px,5.2vw,54px); margin:0 0 8px;
+}
+.hero__content p{color:var(--muted); margin:0 0 16px}
+.accent{
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.cta{display:flex; gap:10px}
+.btn{display:inline-flex; align-items:center; gap:8px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:#001018; font-weight:800; padding:10px 16px; border-radius:12px}
+.btn.ghost{background:transparent; color:var(--text); border:1px solid var(--border)}
+.btn:hover{transform:translateY(-2px)}
+
+/* ===== Hero Image (replace hero__blob) ===== */
+.hero__img{display:flex; align-items:center; justify-content:center}
+.hero__img img{
+  width:100%; max-width:360px; aspect-ratio:1/1; object-fit:cover;
+  border-radius:20px; border:2px solid var(--border);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
 }
 
-/* ---------- هر بخش (درباره من، پروژه‌ها، تماس) ---------- */
-section {
-  background-color: #2a2a2a;
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 10px;
+/* ===== Cards / Sections ===== */
+.card{
+  background: linear-gradient(180deg,#111522cc,#0d111dcc);
+  border:1px solid var(--border); border-radius:var(--radius);
+  padding:20px; margin:18px 0; backdrop-filter:blur(var(--blur));
+  box-shadow: var(--shadow);
 }
+.card:hover{transform:translateY(-4px)}
+h2{margin:0 0 10px}
+p{color:var(--muted)}
 
-/* ---------- تیترهای سطح ۲ ---------- */
-h2 {
-  color: #4da3ff;
+/* ===== Projects grid ===== */
+.grid{
+  list-style:none; margin:0; padding:0;
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px;
 }
+.proj{
+  background:#0f131dcc; border:1px solid var(--border); border-radius:14px;
+  overflow:hidden; display:flex; flex-direction:column;
+  transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.proj img{width:100%; aspect-ratio:3/2; object-fit:cover; display:block}
+.proj h3{margin:12px 12px 6px}
+.proj p{margin:0 12px 10px}
+.proj .actions{display:flex; gap:10px; padding:12px}
+.link{color:var(--accent-2)}
+.proj:hover{transform:translateY(-4px); border-color:#3a4b70; box-shadow: var(--shadow)}
 
-/* ---------- لینک‌ها ---------- */
+/* ===== Footer ===== */
+.footer{color:var(--muted); text-align:center; padding:24px 0}
+/* رنگ لینک‌ها در حالت تیره */
 a {
-  color: #4da3ff;
+  color: var(--text);
   text-decoration: none;
+  font-weight: 500;
 }
 
 a:hover {
+  color: var(--accent-2);
   text-decoration: underline;
+}
+
+
+/* ===== Light theme ===== */
+body.light{
+  --bg:#f3f6fb; --bg-2:#eef3fb; --glass:#ffffffee; --text:#0e1117; --muted:#4a556d;
+  --border:#d6deed; --shadow:0 12px 30px rgba(23,35,69,.12);
+}
+body.light .nav{background:#ffffffcc}
+body.light .card, body.light .proj{background:#ffffffcc}
+
+/* ===== Responsive ===== */
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr; padding-top:30px}
+  .menu{display:none}
 }

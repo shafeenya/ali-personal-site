@@ -1,41 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>سایت شخصی من</title>
-    <!-- این خط وصل کردن CSS است -->
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-      <h1>سلام، من علی هستم</h1>
-      <p>طراح وب تازه‌کار که دارم یاد می‌گیرم چطور سایت بسازم.</p>
-    </header>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>علی شفیع نیا — وب‌سایت شخصی</title>
 
-    <main>
-      <section id="about">
-        <h2>درباره من</h2>
-        <p>من به طراحی و ساخت سایت علاقه دارم و در حال یادگیری HTML و CSS هستم.</p>
-      </section>
+  <!-- فونت فارسی -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-      <section id="projects">
-        <h2>پروژه‌ها</h2>
-        <ul>
-          <li>پروژه شماره ۱ – وب‌سایت ساده</li>
-          <li>پروژه شماره ۲ – تمرین طراحی دکمه‌ها</li>
-        </ul>
-      </section>
+  <!-- آیکون‌ها -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
-      <section id="contact">
-        <h2>تماس با من</h2>
-        <p>ایمیل: <a href="mailto:example@gmail.com">example@gmail.com</a></p>
-      </section>
-    </main>
+  <!-- استایل -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- نوار ناوبری شیشه‌ای -->
+  <nav class="nav">
+    <a class="brand" href="#">Ali<span>Dev</span></a>
+    <ul class="menu">
+      <li><a href="#about">درباره</a></li>
+      <li><a href="#projects">پروژه‌ها</a></li>
+      <li><a href="#contact">تماس</a></li>
+    </ul>
+    <button id="themeToggle" class="icon-btn" title="تغییر تم">
+      <i class="ri-sun-line"></i>
+    </button>
+  </nav>
 
-    <footer>
-      <p>© ۲۰۲۵ علی. همه حقوق محفوظ است.</p>
-    </footer>
-  </body>
-  <!-- trigger pages build -->
+  <!-- هیروی مدرن -->
+  <header class="hero container">
+    <div class="hero__content">
+      <h1>سلام، من <span class="accent">علی شفیع نیا</span> هستم.</h1>
+      <p>در این مکان وقایعی شگرف رقم خواهد خورد.</p>
+      <div class="cta">
+        <a class="btn" href="#projects"><i class="ri-rocket-2-line"></i> دیدن پروژه‌ها</a>
+        <a class="btn ghost" href="#contact"><i class="ri-chat-1-line"></i> ارتباط</a>
+      </div>
+    </div>
+    <div class="hero__img">
+  <img src="me.jpg" alt="عکس علی">
+</div>
+  </header>
+
+  <main class="container">
+    <section id="about" class="card">
+      <h2><i class="ri-user-3-line"></i> درباره من</h2>
+      <p>شاعر و مترجم زبان های خارجی.</p>
+    </section>
+
+    <section id="projects" class="card">
+      <h2><i class="ri-stack-line"></i> پروژه‌ها</h2>
+      <ul class="grid">
+        <li class="proj">
+          <img src="https://picsum.photos/600/400?random=1" alt="پروژه ۱">
+          <h3>اشعار</h3>
+          <p>سروده های عین شین.</p>
+          <div class="actions">
+            <a href="#" class="link">نمایش</a>
+          </div>
+        </li>
+        <li class="proj">
+          <img src="https://picsum.photos/600/400?random=2" alt="پروژه ۲">
+          <h3>مقالات</h3>
+          <p>آنچه علی فهمید.</p>
+          <div class="actions">
+            <a href="#" class="link">نمایش</a>
+          </div>
+        </li>
+        <li class="proj">
+          <img src="https://picsum.photos/600/400?random=3" alt="پروژه ۳">
+          <h3>آموزش زبان</h3>
+          <p>انگلیسی،فرانسوی،ترکی استانبولی.</p>
+          <div class="actions">
+            <a href="#" class="link">نمایش</a>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="contact" class="card">
+      <h2><i class="ri-mail-line"></i> تماس</h2>
+      <p>ایمیل: <a href="mailto:Shafeeniaali.com">Shafeeniaali@gmail.com</a></p>
+      <p>شبکه‌ها: 
+        <a class="icon-link" href="#"><i class="ri-github-line"></i></a>
+        <a class="icon-link" href="#"><i class="ri-linkedin-line"></i></a>
+        <a class="icon-link" href="#"><i class="ri-instagram-line"></i></a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <small>© <span id="year"></span> علی — ساخته‌شده با عشق.</small>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Toggle تم روشن/تیره
+    const btn = document.getElementById('themeToggle');
+    btn.onclick = () => {
+      document.body.classList.toggle('light');
+      btn.innerHTML = document.body.classList.contains('light') ? 
+        '<i class="ri-moon-line"></i>' : '<i class="ri-sun-line"></i>';
+    };
+  </script>
+</body>
 </html>
